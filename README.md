@@ -105,6 +105,71 @@ CAP_PROP_POS_AVI_RATIO	|비디오 파일 상대 위치	|0 = 시작, 1 = 끝
   * Downsampling : 원본 이미지에서 크기를 축소하는 것 (상위 단계 이미지)
   * 테두리 외삽법 : 이미지를 확대하거나 축소할 경우, 이미지 영역 밖의 픽셀은 추정을 통해 값을 할당하는 방법
   
-## Lec8
-## Lec9
-## Lec10
+## Lec8 - 크기 조절
+* 원리
+  * 확대 : 픽셀에 대한 보간법
+  * 축소 : 픽셀에 대한 병합법
+  * 사용자가 요구하는 절대 크기로 변경하는 방법
+  * 비율에 맞게 상대 크기로 변경하는 방법
+  
+* 사용 코드
+  * 이미지 크기 조절 함수 : cv2.resize(src, dstSize, fx, fy, interpolation)
+  
+    * 절대 크기는 튜플 형식으로 dsize=(width, height)의 값을 할당해 사용한다.
+    * 상대 크기는 절대 크기에 (0, 0)을 할당한 다음, 상대 크기의 값을 할당해 사용한다. 그 이유는 fx와 fy에서 계산된 크기가 dsize에 할당되기 때문이다.
+    * 절대 크기 계산 : dsize.width = round(fx*src.cols), dsize.height = round(fy*src.rows)
+    * 상대 크기 계산 : fx = dsize.width/src.cols, fy = dsize.height/src.rows
+    
+* 용어
+  * 이웃 보간법 : 가장 가까운 위치에 있는 픽셀의 값을 참조하는 방법, 구현하기 쉽고 빠르나 계단현상이 나타난다는 것이 단점
+  * 쌍 선형 보간법(확대) : 1차원 공간에서 사용하는 선형 보간법을 2차원 공간에서도 사용하기 위해 확장한 보간법
+  * 바이큐빅 보간법(확대) : 인접 그리드 경계에서 픽셀 값이 부드럽게 이어지기 위해 1차 미분이 연속임의 조건을 만족한느 가장 낮은 차수의 다항식 보간법
+  * 영역 보간법(축소) : 이미지를 확대하는 경우, 이웃 보간법과 비슷한 결과를 반환한다.
+  
+* interpolation 속성
+
+속성 |	의미
+-----|-----|
+cv2.INTER_NEAREST	|이웃 보간법
+cv2.INTER_LINEAR	|쌍 선형 보간법
+cv2.INTER_LINEAR_EXACT	|비트 쌍 선형 보간법
+cv2.INTER_CUBIC	|바이큐빅 보간법
+cv2.INTER_AREA	|영역 보간법
+cv2.INTER_LANCZOS4	|Lanczos 보간법
+  
+## Lec9 - 자르기
+* 사용 코드
+  * 관심 영역 지정 : src[높이(행), 너비(열)]
+  * 깊은 복사 : src[높이(행), 너비(열)].copy() // dst = src의 얕은 복사를 사용할 경우 원본도 영향을 받으므로 깊은 복사 사용
+  
+* 용어
+  * 관심 영역(ROI) : 객체를 탐지하거나 검출하는 영역, 특정 영역을 잘라내는 것, 이미지 상에서 관심 있는 영역
+  
+## Lec10 - 색상 공간 변환
+* 원리
+  * 데이터 타입을 같게 유지하고 채널을 변환한다.
+
+* 사용 코드 
+  * 색상 공간 변환 함수 : cv2.cvtColor(src, code, dstCn)
+  * 색상 변환 코드(dstCn) : 원본_이미지_색상_공간2결과_이미지_색상_공간 ex) BGR2GRAY
+  
+* 색상 공간 코드
+
+속성	|의미	|비고
+-----|-----|-----|
+BGR	|Blue, Green, Red 채널	|-
+BGRA	|Blue, Green, Red, Alpha 채널	|-
+RGB	|Red, Green, Blue 채널	|-
+RGBA	|Red, Green, Blue, Alpha 채널	|-
+GRAY	|단일 채널	|그레이스케일
+BGR565	|Blue, Green, Red 채널	|16 비트 이미지
+XYZ	|X, Y, Z 채널	|CIE 1931 색 공간
+YCrCb	|Y, Cr, Cb 채널	|YCC (크로마)
+HSV	|Hue, Saturation, Value 채널	|색상, 채도, 명도
+Lab	|L, a, b 채널	|반사율, 색도1, 색도2
+Luv	|L, u, v 채널	|CIE Luv
+HLS	|Hue, Lightness, Saturation 채널	|색상, 밝기, 채도
+YUV	|Y, U, V 채널	|밝기, 색상1, 색상2
+BG, GB, RG	|디모자이킹	|단일 색상 공간으로 변경
+_EA	|디모자이킹	|가장자리 인식
+_VNG	|디모자이킹	|그라데이션 사용
