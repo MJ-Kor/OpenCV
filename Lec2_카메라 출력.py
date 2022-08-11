@@ -25,7 +25,7 @@ while cv2.waitKey(33) < 0:
 # mat : 이미지, 윈도우 창에 할당할 이미지
 
 capture.release()
-cv2.destroyAllwindows()
+cv2.destroyAllWindows()
 # 메모리 해제 메서드 :: capture.release()
 # 윈도우 창 제거 함수 :: cv2.destroyAllWindows()
 # 특정 윈도우 창 제거 함수 :: cv2.destroyWindow(winname)

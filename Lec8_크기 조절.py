@@ -1,6 +1,3 @@
-# 이미지 확대 : 픽셀에 대한 보간법
-# 이미지 추소 : 픽셀에 대한 병합법
-
 import cv2
 
 src = cv2.imread("C:\\Users\\User\\Desktop\\Image\\ara.jpg", cv2.IMREAD_COLOR)
@@ -13,7 +10,6 @@ dst2 = cv2.resize(src, dsize=(0, 0), fx=0.3, fy=0.7, interpolation=cv2.INTER_LIN
 # fx : 상대 크기, dsize.width/src.cols
 # fy : 상대 크기, dsize.height/src.rows
 # 상대 크기는 절대 크기에 (0, 0)을 할당한 다음에 상대 크기의 값을 할당해 사용, 이유는 fx, fy에서 계산된 크기가 dsize에 할당되기 때문
-# interpolation : 보간법, 이미지의 비율을 변경하려면 존재하지 않는 영역에 새로운 픽셀 값을 매핑하거나 존재하는 픽셀들을 압축해서 새로운 값을 할당.
 
 cv2.imshow("src", src)
 cv2.imshow("dst", dst)

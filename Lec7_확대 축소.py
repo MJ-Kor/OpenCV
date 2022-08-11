@@ -17,9 +17,9 @@ dst = cv2.pyrUp(src, dstsize=(width * 2, height * 2), borderType=cv2.BORDER_DEFA
 # dstSize : |dstSize.width - src.colsX2| <= (dstSize.width mod 2)
 #           |dstSize.height - src.rowsX2| <= (dstSize.height mod 2)
 
-dst2 = cv2.pyrDown(src)
+dst2 = cv2.pyrDown(src, borderType=cv2.BORDER_REPLICATE)
 # 이미지 2배 축소 함수 :: cv2.pyrDown(src, dstSize, borderType)
-# 축소 함수는 BORDER_CONSTANT의 픽셀 외삼법만 사용할 수 있다.
+# 축소 함수는 BORDER_CONSTANT를 제외한 나머지 픽셀 외삼법을 사용할 수 있다.
 # dstSize : |dstSize.widthX2 - src.cols| <= 2
 #           |dstSize.heightX2 - src.rows| <= 2
 
