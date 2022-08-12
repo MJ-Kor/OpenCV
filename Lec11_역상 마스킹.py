@@ -12,7 +12,7 @@ mask = cv2.rectangle(blank, (375, 230), (420, 340), (255, 255, 255), -1)
 # img : 사각형을 넣을 이미지
 # upper_left : 사각형 좌측상단 좌표
 # bottom_right : 사각형 우측하단 좌표
-# borderColor : 테두리선 색상
+# borderColor : 테두리선 색상, RGB 코드
 # borderThickness : 테두리선 두께, -1로 설정할 경우 채워진 사각형이 그려짐
 
 dst = cv2.bitwise_not(src, mask=mask)
@@ -20,12 +20,8 @@ dst = cv2.bitwise_not(src, mask=mask)
 # src : 원본 이미지
 # mask : not 연산을 적용할 특정 영역을 의미, 마스크 배열이 포함되어 있다면, 해당 영역만 반전 연산을 적용한다.
 
-
-# height, width, channel = src.shape
-# print(height, width, channel)
+print(src.shape[:2])
 print(np.zeros(src.shape[:2], dtype="uint8"))
 cv2.imshow("mask", mask)
-cv2.imshow("src", src)
-cv2.imshow("dst", dst)
 cv2.waitKey()
 cv2.destroyAllWindows()
