@@ -40,22 +40,22 @@ OpenCV 설치, opencv-python
   
 * VideoCapture 속성
 
-속성 | 의미 | 너비
------|----- |-----|
-cv2.CAP_PROP_FRAME_WIDTH	| 프레임의 너비	| -
-cv2.CAP_PROP_FRAME_HEIGHT	|프레임의 높이	|-
-cv2.CAP_PROP_FRAME_COUNT	|총 프레임 수	|-
-cv2.CAP_PROP_FPS	|프레임 속도	|-
-cv2.CAP_PROP_FOURCC	|코덱 코드	|-
-cv2.CAP_PROP_BRIGHTNESS	|이미지 밝기	|카메라만 해당
-cv2.CAP_PROP_CONTRAST	|이미지 대비	|카메라만 해당
-cv2.CAP_PROP_SATURATION	|이미지 채도	|카메라만 해당
-cv2.CAP_PROP_HUE	|이미지 색상	|카메라만 해당
-cv2.CAP_PROP_GAIN	|이미지 게인	|카메라만 해당
-cv2.CAP_PROP_EXPOSURE	|이미지 노출	|카메라만 해당
-cv2.CAP_PROP_POS_MSEC	|프레임 재생 시간	|ms 반환
-cv2.CAP_PROP_POS_FRAMES	|현재 프레임	|프레임의 총 개수 미만
-CAP_PROP_POS_AVI_RATIO	|비디오 파일 상대 위치	|0 = 시작, 1 = 끝
+| 속성                         | 의미            | 너비            |
+|----------------------------|---------------|---------------|
+| cv2.CAP_PROP_FRAME_WIDTH	  | 프레임의 너비	      | -             |
+| cv2.CAP_PROP_FRAME_HEIGHT	 | 프레임의 높이	      | -             |
+| cv2.CAP_PROP_FRAME_COUNT	  | 총 프레임 수	      | -             |
+| cv2.CAP_PROP_FPS	          | 프레임 속도	       | -             |
+| cv2.CAP_PROP_FOURCC	       | 코덱 코드	        | -             |
+| cv2.CAP_PROP_BRIGHTNESS	   | 이미지 밝기	       | 카메라만 해당       |
+| cv2.CAP_PROP_CONTRAST	     | 이미지 대비	       | 카메라만 해당       |
+| cv2.CAP_PROP_SATURATION	   | 이미지 채도	       | 카메라만 해당       |
+| cv2.CAP_PROP_HUE	          | 이미지 색상	       | 카메라만 해당       |
+| cv2.CAP_PROP_GAIN	         | 이미지 게인	       | 카메라만 해당       |
+| cv2.CAP_PROP_EXPOSURE	     | 이미지 노출	       | 카메라만 해당       |
+| cv2.CAP_PROP_POS_MSEC	     | 프레임 재생 시간	    | ms 반환         |
+| cv2.CAP_PROP_POS_FRAMES	   | 현재 프레임	       | 프레임의 총 개수 미만  |
+| CAP_PROP_POS_AVI_RATIO	    | 비디오 파일 상대 위치	 | 0 = 시작, 1 = 끝 |
 
 ## Lec5 - 대칭
 * 원리
@@ -128,15 +128,15 @@ CAP_PROP_POS_AVI_RATIO	|비디오 파일 상대 위치	|0 = 시작, 1 = 끝
   
 * interpolation 속성
 
-속성 |	의미
------|-----|
-cv2.INTER_NEAREST	|이웃 보간법
-cv2.INTER_LINEAR	|쌍 선형 보간법
-cv2.INTER_LINEAR_EXACT	|비트 쌍 선형 보간법
-cv2.INTER_CUBIC	|바이큐빅 보간법
-cv2.INTER_AREA	|영역 보간법
-cv2.INTER_LANCZOS4	|Lanczos 보간법
-  
+| 속성                      | 	의미         |
+|-------------------------|-------------|
+| cv2.INTER_NEAREST	      | 이웃 보간법      |
+| cv2.INTER_LINEAR	       | 쌍 선형 보간법    |
+| cv2.INTER_LINEAR_EXACT	 | 비트 쌍 선형 보간법 |
+| cv2.INTER_CUBIC	        | 바이큐빅 보간법    |
+| cv2.INTER_AREA	         | 영역 보간법      |
+| cv2.INTER_LANCZOS4	     | Lanczos 보간법 |
+
 ## Lec9 - 자르기
 * 사용 코드
   * 관심 영역 지정 : src[높이(행), 너비(열)]
@@ -155,21 +155,21 @@ cv2.INTER_LANCZOS4	|Lanczos 보간법
   
 * 색상 공간 코드
 
-속성	|의미	|비고
------|-----|-----|
-BGR	|Blue, Green, Red 채널	|-
-BGRA	|Blue, Green, Red, Alpha 채널	|-
-RGB	|Red, Green, Blue 채널	|-
-RGBA	|Red, Green, Blue, Alpha 채널	|-
-GRAY	|단일 채널	|그레이스케일
-BGR565	|Blue, Green, Red 채널	|16 비트 이미지
-XYZ	|X, Y, Z 채널	|CIE 1931 색 공간
-YCrCb	|Y, Cr, Cb 채널	|YCC (크로마)
-HSV	|Hue, Saturation, Value 채널	|색상, 채도, 명도
-Lab	|L, a, b 채널	|반사율, 색도1, 색도2
-Luv	|L, u, v 채널	|CIE Luv
-HLS	|Hue, Lightness, Saturation 채널	|색상, 밝기, 채도
-YUV	|Y, U, V 채널	|밝기, 색상1, 색상2
-BG, GB, RG	|디모자이킹	|단일 색상 공간으로 변경
-_EA	|디모자이킹	|가장자리 인식
-_VNG	|디모자이킹	|그라데이션 사용
+| 속성	         | 의미	                            | 비고            |
+|-------------|--------------------------------|---------------|
+| BGR	        | Blue, Green, Red 채널	           | -             |
+| BGRA	       | Blue, Green, Red, Alpha 채널	    | -             |
+| RGB	        | Red, Green, Blue 채널	           | -             |
+| RGBA	       | Red, Green, Blue, Alpha 채널	    | -             |
+| GRAY	       | 단일 채널	                         | 그레이스케일        |
+| BGR565	     | Blue, Green, Red 채널	           | 16 비트 이미지     |
+| XYZ	        | X, Y, Z 채널	                    | CIE 1931 색 공간 |
+| YCrCb	      | Y, Cr, Cb 채널	                  | YCC (크로마)     |
+| HSV	        | Hue, Saturation, Value 채널	     | 색상, 채도, 명도    |
+| Lab	        | L, a, b 채널	                    | 반사율, 색도1, 색도2 |
+| Luv	        | L, u, v 채널	                    | CIE Luv       |
+| HLS	        | Hue, Lightness, Saturation 채널	 | 색상, 밝기, 채도    |
+| YUV	        | Y, U, V 채널	                    | 밝기, 색상1, 색상2  |
+| BG, GB, RG	 | 디모자이킹	                         | 단일 색상 공간으로 변경 |
+| _EA	        | 디모자이킹	                         | 가장자리 인식       |
+| _VNG	       | 디모자이킹	                         | 그라데이션 사용      |
