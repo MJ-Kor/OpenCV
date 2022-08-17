@@ -173,3 +173,31 @@ OpenCV 설치, opencv-python
 | BG, GB, RG	 | 디모자이킹	                         | 단일 색상 공간으로 변경 |
 | _EA	        | 디모자이킹	                         | 가장자리 인식       |
 | _VNG	       | 디모자이킹	                         | 그라데이션 사용      |
+
+## Lec11 - 역상
+* 원리
+  * 픽셀 단위마다 10진수의 픽셀 값을 2진수로 변경한 다음, 비트 연산 NOT을 적용하여 각 자릿수의 값을 반대로 바꿔준다.
+
+* 사용 코드
+  * Not 연산 함수 : cv2.bitwise_not(src)
+
+## Lec12 - 이진화
+* 원리
+  * 픽셀값이 지정한 임계값을 초과할 경우 최댓값으로 변경하고 이하의 값은 0으로 바꾸는 연산 적용
+  * dst = (src > threshold) ? maxval : 0
+
+* 사용 코드
+  * 이진화 함수 : cv2.threshold(src, thresh, maxval, type)
+
+* 임계값 형식
+
+| 속성	                    | 의미	                                                                   |
+|------------------------|-----------------------------------------------------------------------|
+| cv2.THRESH_BINARY	     | dst = (src > thresh) ? maxval : 0   (임곗값을 초과할 경우 maxval, 아닐 경우 0)     |
+| cv2.THRESH_BINARY_INV	 | dst = (src > thresh) ? 0 : maxval   (임곗값을 초과할 경우 0, 아닐 경우 maxval)     |
+| cv2.THRESH_TRUNC	      | dst = (src > thresh) ? thresh : src (임곗값을 초과할 경우 thresh, 아닐 경우 변형 없음) |
+| cv2.THRESH_TOZERO	     | dst = (src > thresh) ? src : 0      (임곗값을 초과할 경우 변형 없음, 아닐 경우 0)      |
+| cv2.THRESH_TOZERO_INV	 | dst = (src > thresh) ? 0 : src      (임곗값을 초과할 경우 0, 아닐 경우 변형 없음)      |
+| cv2.THRESH_MASK	       | 검은색 이미지로 변경(마스크용)                                                     |
+| cv2.THRESH_OTSU	       | 오츠 알고리즘 적용(단일 채널 이미지에만 적용 가능)                                         |
+| cv2.THRESH_TRIANGLE	   | 삼각형(Triangle) 알고리즘 적용(단일 채널 이미지에만 적용 가능)                              |
