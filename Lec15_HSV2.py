@@ -1,5 +1,6 @@
 import cv2
-
+import numpy as np #numpy library
+np.set_printoptions(threshold=np.inf, linewidth=np.inf) #inf = infinity
 src = cv2.imread("C:\\Users\\User\\Desktop\\Image\\tomato.jpg")
 hsv = cv2.cvtColor(src, cv2.COLOR_BGR2HSV)
 h, s, v = cv2.split(hsv)
@@ -9,7 +10,7 @@ h = cv2.inRange(h, 8, 20)
 # src : 입력 이미지
 # lowerb : 낮은 범위
 # upperb : 높은 범위
-
+print(h)
 orange = cv2.bitwise_and(hsv, hsv, mask = h)
 # 비트 연산 AND :: cv2.bitwise_and(src1, src2, mask)
 # src1 : 입력 이미지1
@@ -17,6 +18,7 @@ orange = cv2.bitwise_and(hsv, hsv, mask = h)
 # mask : 마스크 영역
 orange = cv2.cvtColor(orange, cv2.COLOR_HSV2BGR)
 
+cv2.imshow("h", h)
 cv2.imshow("orange", orange)
 cv2.waitKey()
 cv2.destroyAllWindows()
