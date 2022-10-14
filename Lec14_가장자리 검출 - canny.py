@@ -1,7 +1,7 @@
 import cv2
 src = cv2.imread("C:\\Users\\User\\Desktop\\Image\\apple.jpg")
 
-canny = cv2.Canny(src, 100, 255)
+canny = cv2.Canny(src, 50, 180, L2gradient=True)
 # 캐니 함수 :: cv.Canny(src, threshold1, threshold2, apertureSize, L2gradient)
 # 라플라스 필터 방식을 개선한 방식으로 x와 y에 대해 1차 미분을 계산한 다음 네 방향으로 미분한다.
 # 네 방향으로 미분한 결과로 극댓값을 갖는 지점들이 가장자리가 된다.
